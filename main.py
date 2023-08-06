@@ -5,7 +5,9 @@
 # bot's name - giphy_tpy_bot
 # pip install pyTelegramBotAPI
 
-import telebot, giphy_search
+
+import telebot
+from giphy_search import giphy_search_2 as gs
 bot = telebot.TeleBot('6429077230:AAHmDsR9QJQAhaP0-vKgAV2yKjAoY0rBaI0')
 
 @bot.message_handler(commands=["start"])
@@ -16,9 +18,12 @@ def start(message):
         mess1 = f"Привіт, {message.from_user.first_name}. Я з сімейства Автоботів, вкажи слово і я дещо тобі покажу"
     bot.send_message(message.chat.id, mess1)
 
+
 @bot.message_handler()
 def get_user_text(message):
-    link = "".join(giphy_search.giphy_search(message, 1))
-    bot.send_animation(message.chat.id, animation=link)
+    url = "".join(gs(message.text, 1))
+    bot.send_animation(message.chat.id, animation=url)
 
 bot.polling(non_stop=True)
+
+

@@ -42,5 +42,5 @@ def giphy_search_2(search_obj:str, max_num_of_output:str) -> str:
         #     print(parse.urlparse(elem))
     return list_of_urls
 
-print(giphy_search("lion", 2))
-print(giphy_search_2("lion", 2))
+# print(giphy_search("lion", 2))
+# print(giphy_search_2("lion", 2))
